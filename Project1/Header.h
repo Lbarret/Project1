@@ -39,7 +39,7 @@ public:
 			database += x + " ";
 		}
 
-		std::size_t found = database.find(a + " " + b);
+		std::size_t found = database.find(a + "*" + b);
 		userfile.close();
 		if (found != std::string::npos) {
 			return true;
@@ -52,7 +52,7 @@ public:
 
 	void add_username() {
 		userfile.open("Usernames.txt",std::ofstream::app);
-		userfile << "\n" << username << "\n" << password;
+		userfile << "\n" << username << "*" << password << "\n";
 		userfile.close();
 	}
 	

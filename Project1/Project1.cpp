@@ -20,7 +20,7 @@ int main()
 
 	
 		if (newuser == "y") {
-			std::cout << "Enter Username: ";
+			std::cout << "\nEnter Username: ";
 			std::cin >> user.username;
 			std::cout << "Enter Password: ";
 			std::cin >> user.password;
@@ -50,12 +50,12 @@ int main()
 		std::cin >> check_password;
 
 		if (user.check_unlock(check_user, check_password)) {
-			std::cout << "Congrats! You're in!\n";
+			std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~Congrats! You're in!~~~~~~~~~~~~~~~~~~~~~~\n";
 			y++;
 		}
 
 		else {
-			std::cout << "Username and/or password incorrect\nTry again? (y/n)\n";
+			std::cout << "\nUsername and/or password incorrect\n\nTry again? (y/n)\n";
 			std::cin >> again;
 
 			if (again == "y") {
