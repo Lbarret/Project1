@@ -1,7 +1,3 @@
 
 lbarret
 password
-lbarret
-password
-chris
-test
