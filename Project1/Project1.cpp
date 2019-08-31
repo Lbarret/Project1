@@ -7,25 +7,39 @@
 
 int main()
 {
-	std::ofstream myfile;
+	std::fstream myfile;
 	Credentials user;
 	std::string newuser, check_user, check_password;
+	int i = 0;
 
-	std::cout << "New User? (y/n)";
-	std::cin >> newuser;
+	while (i == 0) {
 
-	if (newuser == "y") {
-		std::cout << "Enter Usesrname: ";
-		std::cin >> user.username;
-		std::cout << "Enter Password: ";
-		std::cin >> user.password;
-		
-
-
-		user.add_username();
-
-	}
+		std::cout << "New User? (y/n)\n";
+		std::cin >> newuser;
 	
+
+	
+		if (newuser == "y") {
+			std::cout << "Enter Username: ";
+			std::cin >> user.username;
+			std::cout << "Enter Password: ";
+			std::cin >> user.password;
+
+			if (user.check_username()) {
+				std::cout << "Username already exists!\n";
+			}
+
+			else {
+				user.add_username();
+			}
+		}
+		else {
+			i++;
+		}
+	}
+
+	
+	/*
 	else{
 		std::cout << "Enter Usesrname: ";
 		std::cin >> check_user;
@@ -34,12 +48,14 @@ int main()
 
 		if (user.check_username()) {
 			std::cout << "Congrats! You're in!\n";
-			i++;
+		
 		}
 
 		else {
 			std::cout << "Sorry, please try again\n";
 		}
 	}
+	*/
+	
 }
 

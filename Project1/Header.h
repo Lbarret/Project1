@@ -6,24 +6,30 @@ class Credentials {
 	
 
 public:
-	std::string username, password;
+	std::string username, password, database;
 	std::fstream userfile;
 	int offset;
+
 	bool chkuser;
 	
 
 	bool check_username() {
 
 		userfile.open("Usernames.txt");
-		std::getline(userfile, username);
-		if ((offset = username.find(username, 0)) != std::string::npos) {
-			chkuser = true;
+		userfile >> database;
+		std::size_t found = database.find(username);
+		userfile.close();
+		if( found != std::string::npos){
+			return true;
+		}
+		else {
+			return false;
 		}
 
 	}
 	void add_username() {
-		userfile.open("Usernames.txt");
-		userfile << username << "\n" << password;
+		userfile.open("Usernames.txt",std::ofstream::app);
+		userfile << "\n" << username << "\n" << password;
 		userfile.close();
 	}
 	
