@@ -9,8 +9,8 @@ int main()
 {
 	std::fstream myfile;
 	Credentials user;
-	std::string newuser, check_user, check_password;
-	int i = 0;
+	std::string newuser, check_user, check_password, again;
+	int i = 0, y=0;
 
 	while (i == 0) {
 
@@ -27,10 +27,12 @@ int main()
 
 			if (user.check_username()) {
 				std::cout << "Username already exists!\n";
+				
 			}
 
 			else {
 				user.add_username();
+				i++;
 			}
 		}
 		else {
@@ -39,23 +41,30 @@ int main()
 	}
 
 	
-	/*
-	else{
+	while (y == 0) {
+
 		std::cout << "Enter Usesrname: ";
 		std::cin >> check_user;
 		std::cout << "Enter Password: ";
 		std::cin >> check_password;
 
-		if (user.check_username()) {
+		if (user.check_unlock(check_user, check_password)) {
 			std::cout << "Congrats! You're in!\n";
-		
+			y++;
 		}
 
 		else {
-			std::cout << "Sorry, please try again\n";
+			std::cout << "Username and/or password incorrect\nTry again? (y/n)\n";
+			std::cin >> again;
+
+			if (again == "y") {
+
+			}
+			else {
+				y++;
+			}
 		}
 	}
-	*/
 	
 }
 
